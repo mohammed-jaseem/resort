@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resort Paradise</title>
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <script src="https://cdn.tailwindcss.com"></script> 
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md py-4">
+        <div class="container mx-auto flex justify-between items-center px-6">
+            <a href="#" class="text-2xl font-bold text-blue-600">Resort Paradise</a>
+            <div class="space-x-4 flex items-center">
+                <a href="#" class="text-gray-700 hover:text-blue-600">Home</a>
+                <a href="{% url 'web:booking' %}" class="text-gray-700 hover:text-blue-600">Rooms</a>
+                <a href="{% url 'web:amenities' %}" class="text-gray-700 hover:text-blue-600">Amenities</a>
+                <a href="{% url 'web:reviews' %}" class="text-gray-700 hover:text-blue-600">Reviews</a>
+                <a href="{% url 'web:contact' %}" class="text-gray-700 hover:text-blue-600">Contact</a>
+                <a class="" href="{% url 'web:logout' %}"> <img class="w-[30px] bg-red-500 px-[5px] py-[5px] rounded-2xl" src="static/images/logout.png" alt=""></a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="slider">
+        <div class="slide active">
+            <div class="content">
+                <h1>Slide Title 1</h1>
+                <p>Description for slide 1.</p>
+                <button>Learn More</button>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="content">
+                <h1>Slide Title 2</h1>
+                <p>Description for slide 2.</p>
+                <button>Learn More</button>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="content">
+                <h1>Slide Title 3</h1>
+                <p>Description for slide 3.</p>
+                <button>Learn More</button>
+            </div>
+        </div>
+        <div class="navigation">
+            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="bg-cover bg-center h-screen" style="background-image: url('static/images/image.jpeg');">
+        <div class="flex items-center justify-center h-full bg-black bg-opacity-50">
+            <div class="text-center px-6">
+                <h1 class="text-5xl font-bold text-[#fff]">Welcome to Resort Paradise</h1>
+                <p class="mt-4 text-lg text-white">Discover unmatched luxury and comfort</p>
+                <a href="{% url 'web:booking' %}" class="mt-8 inline-block px-8 py-4 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700">Explore Our Rooms</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Rooms Section -->
+    <section id="rooms" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-gray-800">Our Rooms</h2>
+            <p class="text-center text-gray-600 mt-4">Indulge in our luxurious rooms and suites, each designed for ultimate comfort and elegance</p>
+
+            <div class="mt-12 grid gap-8 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+
+                {% for room in rooms %}
+                <!-- Room 1 -->
+                <div class="bg-white shadow-md rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="{{room.image.url}}" alt="Deluxe Room" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-gray-800">{{room.name}}</h3>
+                        <p class="text-gray-600 mt-2">{{room.short_discription}}</p>
+                        <div class="mt-4 flex justify-between items-center">
+                            <span class="text-lg font-bold text-blue-600">{{room.price}}/night</span>
+                            <a href="{% url 'web:rooms' id=room.id %}"><button class="mt-4 w-full bg-blue-600 px-5 text-white py-2 rounded-lg hover:bg-blue-700">Book Now</button></a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section id="amenities" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-gray-800">Our Amenities</h2>
+            <p class="text-center text-gray-600 mt-4">Enjoy a range of world-class amenities during your stay</p>
+
+            <div class="mt-12 grid gap-8 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <h3 class="text-2xl font-semibold text-blue-600">Infinity Pool</h3>
+                    <p class="text-gray-600 mt-2">Swim with a stunning view of the ocean.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <h3 class="text-2xl font-semibold text-blue-600">Spa & Wellness</h3>
+                    <p class="text-gray-600 mt-2">Relax and rejuvenate with our full-service spa.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <h3 class="text-2xl font-semibold text-blue-600">Fine Dining</h3>
+                    <p class="text-gray-600 mt-2">Savor gourmet meals prepared by world-class chefs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-gray-800">Guest Reviews</h2>
+            <p class="text-center text-gray-600 mt-4">Hear what our guests have to say about their experience</p>
+
+            <div class="mt-12 grid gap-8 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+                    <p class="text-gray-800 italic">"The resort was breathtaking! The staff was friendly, and the rooms were luxurious."</p>
+                    <p class="mt-4 text-right text-gray-700">- Sarah L.</p>
+                </div>
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+                    <p class="text-gray-800 italic">"A perfect getaway. The infinity pool and spa were incredible."</p>
+                    <p class="mt-4 text-right text-gray-700">- Michael R.</p>
+                </div>
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+                    <p class="text-gray-800 italic">"From the room to the food, everything was top-notch. Highly recommend!"</p>
+                    <p class="mt-4 text-right text-gray-700">- Emily W.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-800 text-white py-6 mt-16">
+        <div class="container mx-auto text-center">
+            <p class="text-lg font-semibold">Contact Us</p>
+            <p>Email: info@resortparadise.com | Phone: +123-456-7890</p>
+            <p class="mt-4">&copy; 2024 Resort Paradise. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

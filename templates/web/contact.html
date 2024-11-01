@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Resort</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-6">
+        <!-- Header -->
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-800">Contact Us</h1>
+            <p class="text-gray-600">We would love to hear from you! Reach out to us with any questions or feedback.</p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Contact Form -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h2 class="text-2xl font-semibold mb-4">Send Us a Message</h2>
+                <form>
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-700">Name</label>
+                        <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-700">Email</label>
+                        <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div class="mb-4">
+                        <label for="message" class="block text-gray-700">Message</label>
+                        <textarea id="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    </div>
+                    <button type="submit" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Submit</button>
+                </form>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h2 class="text-2xl font-semibold mb-4">Contact Information</h2>
+                <p class="text-gray-700 mb-4">Feel free to reach out to us through the following methods:</p>
+                
+                <div class="mb-4">
+                    <h3 class="text-xl font-semibold">Phone</h3>
+                    <p class="text-gray-600">+1 (123) 456-7890</p>
+                </div>
+                
+                <div class="mb-4">
+                    <h3 class="text-xl font-semibold">Email</h3>
+                    <p class="text-gray-600">info@resort.com</p>
+                </div>
+
+                <div class="mb-4">
+                    <h3 class="text-xl font-semibold">Address</h3>
+                    <p class="text-gray-600">123 Beach Avenue, Paradise City, PC 45678</p>
+                </div>
+
+                <!-- Google Maps Embed (Optional) -->
+                <div class="mt-4">
+                    <iframe class="w-full h-64 rounded-lg" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434508609!2d144.9537353156553!3d-37.81720974202147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43b1b1e11b%3A0x2c4b3c6e2c08f3e7!2sFederation%20Square!5e0!3m2!1sen!2sau!4v1614153080812!5m2!1sen!2sau" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

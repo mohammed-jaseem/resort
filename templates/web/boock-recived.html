@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Received - Resort</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+    <header class="bg-blue-600 text-white py-4">
+        <div class="container mx-auto text-center">
+            <h1 class="text-3xl font-bold">Resort Booking Received</h1>
+        </div>
+    </header>
+
+    <main class="container mx-auto my-8 p-4">
+        <div class="bg-white shadow-md rounded-lg p-6 max-w-lg mx-auto">
+            <h2 class="text-2xl font-bold text-gray-700 mb-4 text-center">Thank You!</h2>
+            <p class="text-gray-600 text-center mb-6">Your resort booking has been received. We look forward to hosting you soon!</p>
+
+            <div class="mb-4">
+                <h3 class="text-xl font-semibold text-gray-800">Booking Details</h3>
+                {% for detail in details %}
+                <ul class="mt-2 text-gray-600 border-2 px-5 py-5 border-black">
+                    <li><span class="font-bold">Number of Guests:</span> {{detail.number}}</li>
+                    <li><span class="font-bold">Guest Name:</span> {{detail.fullname}}</li>
+                    <li><span class="font-bold">Check-in Date:</span> {{detail.check_date}}</li>
+                    <li><span class="font-bold">Check-out Date:</span> {{detail.checkout_date}}</li>
+                    <li><span class="font-bold">Room Type:</span> {{detail.rooms_type}}</li>
+                </ul>
+                {% endfor %}
+            </div>
+
+            <div class="text-center mt-6">
+                <a href="{% url 'web:index' %}" class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700">Manage Booking</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 Resort. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Booking</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation Bar -->
+    <header class="bg-blue-600 text-white py-4 px-5">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Resort Booking</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="{% url 'web:index' %}" class="hover:underline">Home</a></li>
+                    <li><a href="#" class="hover:underline">Rooms</a></li>
+                    <li><a href="#" class="hover:underline">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Rooms Showcase -->
+    <section class="container mx-auto my-8 px-5">
+        <h2 class="text-3xl font-bold mb-6 text-center">Book Your Stay</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for room in rooms %}
+            <!-- Room 1 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                <img src="{{room.image.url}}" alt="Room Image" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold">{{room.name}}</h3>
+                    <p class="text-gray-600 mt-2">{{room.short_discription}}</p>
+                    <p class="text-blue-600 font-bold mt-4">{{room.price}}/night</p>
+                    <a href="{% url 'web:rooms' id=room.id %}"><button class="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">Book Now</button></a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</body>
+</html>
